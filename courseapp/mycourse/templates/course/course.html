@@ -1,0 +1,28 @@
+{% extends 'master.html' %}
+{% block content %}
+{% for course in courses %}
+
+<div class=" card text-dark bg-info d-inline-block me-3 " style="width: 18rem ;">
+ 
+  <div class="card-body" >
+  <img src="/{{course.course_pic}}" class="card-img-top">
+    <h5 class="card-title">{{course.name}}</h5>
+    <p class="card-text">{{course.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{course.courseFee}}</li>
+    <li class="list-group-item">{{course.dutation}}</li>
+    
+  </ul>
+  <div class="card-body">
+    
+     <a href="#" class="card-link text-dark">DETAIL</a>
+     <a href="{% url 'attendence' course.id %}" class="card-link text-dark">JOIN COURSE</a>
+  
+   
+  </div>
+</div>
+
+{% endfor %}
+{% endblock content %}
+

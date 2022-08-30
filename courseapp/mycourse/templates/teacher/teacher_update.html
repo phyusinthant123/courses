@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<h2>Update Teacher </h2>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for input in form %}
+        <div class="mb-3" style="text-align:left">
+            {{input.label}}
+            {{input|add_class:'form-control'}}
+            <div class="text-danger">{{input.errors}}</div>
+        </div>  
+    {% endfor %}
+    <button type="submit" class="btn btn-primary bt-lg" style="text-align:left">Submit</button>
+    <a href={% url 'courses'%} class="btn btn-primary bt-lg">Back</a>
+</form>
+{% endblock content %}

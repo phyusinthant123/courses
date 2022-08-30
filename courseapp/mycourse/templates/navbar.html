@@ -1,0 +1,45 @@
+<div class="container mb-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Future IT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+           {% if request.user.is_authenticated %}
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+                  </li>
+                  
+              </ul>
+            {% endif %}  
+          </div>
+
+            {% if request.user.is_authenticated %}
+    
+          <div>
+                <a href="{% url 'students.student_profile_setting'%}">
+                    <img src="/{{request.user.student.profile_pic}}" width="60px" height="60px" style="border-radius:50%" class="me-3">
+                    <span class=" link-dark me-3">{{ request.user.username }}</span>
+                </a>   
+                <a href="{% url 'logout' %}" class="link-dark">Logout</a>
+          
+          
+          </div>
+              {% else %}
+              <div>
+                    <a href="{% url 'login' %}" class="link-dark me-3">Login</a>
+                    <a href="{% url 'register' %}" class="link-dark">Register</a>
+              </div>
+              {% endif %} 
+          </div>
+    </nav>  
+</div>  
+
+
+   
+   

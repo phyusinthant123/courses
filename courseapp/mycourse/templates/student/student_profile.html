@@ -1,0 +1,65 @@
+{% extends 'master.html' %}
+{% block content %}
+<div class="row">
+	<div class="col-6">
+		<div class="card card-body text-center">
+			<h5>Warmly Welcome </h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'courses' %}">Join Courses</a>
+		
+			<a class="btn btn-outline-info mt-3  btn-sm btn-block" href="{% url 'feedback' %}">Feedback</a>
+				
+		</div>
+	</div>
+
+	<div class="col-6">
+		<div class="card card-body text-center">
+			<h6>Contact Us :</h6>
+			<hr>
+			
+			
+			<label class="btn btn-outline-warning bt-lg mb-3"><i class="fas fa-phone-alt"></i>  09-256347474</label>
+			
+			<label class="btn btn-outline-warning bt-lg"><i class="fas fa-envelope-open-text"></i>  futureit@gmail.com</label>
+			
+		
+
+		</div>
+	</div>	 
+
+	
+	
+	
+
+	<div class="col-md-12 mt-3">
+		<h5 class="text-center">Your Course Detail</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Course</th>
+					<th>CourseFee</th>
+					<th>Course Dutation </th>
+					<th>Teacher</th>
+					<th>Payment</th>
+					<th></th>
+					
+					
+				</tr>
+		    {% for attendence in attendences %}
+			  	<tr>
+				  <td>{{attendence.course.name}}</td>
+				  <td>{{attendence.course.courseFee}}</td>
+				  <td>{{attendence.course.dutation}}</td>
+				  <td>{{attendence.teacher}}</td>
+				  <td>{{attendence.payment_method}}</td>
+				  <td><button type="submit" class="btn btn-outline-warning bt-lg" style="text-align:left">Start Lesson</button></td>
+				</tr>
+			{% endfor %}   
+			</table>
+		</div>
+	</div>
+</div>
+	
+{% endblock content %}

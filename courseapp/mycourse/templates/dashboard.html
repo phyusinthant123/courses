@@ -1,0 +1,140 @@
+{% extends 'master.html' %}
+{% block content %}
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3 bg-dark">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Students</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_s}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3  bg-dark">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Courses</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_c}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3  bg-dark">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Attendence</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_atten}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h5 class="text-center">Teacher:</h5>
+					<hr>
+			<div class="card mb-3">
+				<a class="btn btn-info  btn-sm btn-block" href="{% url 'teacher' %}">Create Teacher</a>
+				<div class="card-body">
+					<table class="table table-sm">
+						<tr>
+							<th></th>
+							<th>Teacher</th>                    
+							<th>Phone</th>
+							<th>Update</th>
+							<th>Remove</th>
+						</tr>
+						<tr>
+						{% for teacher in teachers %}
+						{% csrf_token %}
+						
+							<td></td>
+							<td>{{teacher.name}}</td>
+							<td>{{teacher.phone}}</td>				
+							<td><a class="btn btn-info "href="{% url 'teacher_update' teacher.id%}">Update</a></td>
+							<td><a class="btn btn-danger "href="{% url 'teacher_delete' teacher.id%}">Remove</a></td>
+						
+						</tr>
+						{% endfor %}
+				
+			</table>
+					
+				</div>
+			</div>
+	</div>
+
+	<div class="col-md-6">
+		<h5 class="text-center">Students:</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>student</th>                    
+					<th>Detail</th>
+					<th>Remove</th>
+				</tr>
+				<tr>
+				{% for student in students %}
+				
+				{% csrf_token %}
+                    <td></td>
+					<td>{{student.name}}</td>					
+					<td><a class="btn btn-info "href="{% url 'students' student.id %}">View</a></td>
+					<td><a class="btn btn-danger "href="{% url 'student_delete' student.id %}">Remove</a></td>
+				</tr>
+					
+				{% endfor %}
+
+					
+				</tr>
+
+			</table>
+		</div>
+	</div>
+	
+</div>
+<div class="row">
+	
+	<div class="col-md-12">
+		<h5 class="text-center">Courses</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Course Name</th>					
+					<th>Create</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+		     
+			  	<tr>
+				  {% for course in courses %}
+				  {% csrf_token %}
+					<td>{{course.name}}</td>
+					<td><a href="{%  url 'course_create' %}" class="btn btn-success">Create</a></td>
+					<td><a href="{%  url 'course_update' course.id %}" class="btn btn-primary">Update</a></td>
+					<td><a href="{%  url 'course_delete' course.id %}" class="btn btn-danger">Remove</a></td>
+				  
+				</tr>
+				{% endfor %}
+				<hr>
+			  
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'master.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="col-md-6" >
+<h3>Thank You For Your Feedback </h3>
+    <form action="" method="POST">
+    {% csrf_token %}
+    
+      {% for input in form %}
+
+              <div class="form-floating mb-3">
+                {{input.label}}
+                {{input|add_class:'form-control'}}
+     
+    {% endfor %}
+              </div>
+    <button type="submit" class="btn btn-primary bt-lg" style="text-align:left">Submit</button>
+    </form>
+
+</div>
+{% endblock content %}
+
+
+ 

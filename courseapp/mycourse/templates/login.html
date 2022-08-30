@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div class="row">
+	<div class="col-6">
+        <form action=""  method="POST">
+
+        <h3><p class="text-center bg-info mb-3 ">LOGIN</p></h3>
+        {% csrf_token %}
+                {% for message in messages %}
+                
+                <div class="alert alert-danger col-6" role="alert">
+                    {{message}}       
+                </div>
+                {% endfor %}
+                
+                    <div class="form-floating mb-3">
+                        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username">
+                        <label for="floatingInput">Username</label>
+                    <div class="text-danger">{{input.errors}}</div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password"name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    <div class="text-danger">{{input.errors}}</div>
+                    
+                    
+                    
+                <button type="submit" class="btn btn-success btn-lg mt-3" name="submit" value="Login" >Login</button>
+            </div>
+        </form>
+        </div>
+        <div class="col-6">
+
+        <img src="/static/img/what-is-php.png"  width="400px" style="position: relative; left: 150px"/>
+        </div>
+</div>
+        
+{% endblock content %}
+
